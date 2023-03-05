@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
     <!--    define the dependency bean-->
-    <bean id="myFortuneService" class="com.practice.springdemo1.HappyFortuneService"></bean>
+    <context:property-placeholder location="classpath:data.properties"></context:property-placeholder>
+    <bean id="myFortuneService" class="com.practice.springdemo1.HappyFortuneService">
+        <property name="randomFortunes" value="${random.Fortunearray}" >
+        </property>
+    </bean>
     <bean id="myCoach" class="com.practice.springdemo1.CricketCoach">
         <property name="fortuneService" ref="myFortuneService"></property>
-        <property name="emailAddress" value="ok@gmail.com"></property>
-        <property name="team" value="sun rises hyderabad"></property>
+        <property name="emailAddress" value="${foo.email}"></property>
+        <property name="team" value="${foo.team}"></property>
     </bean>
 </beans>

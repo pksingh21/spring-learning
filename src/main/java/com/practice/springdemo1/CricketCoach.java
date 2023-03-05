@@ -1,25 +1,38 @@
 package com.practice.springdemo1;
 
-public class CricketCoach implements Coach{
+public class CricketCoach implements Coach {
     private FortuneService fortuneService;
     private String emailAddress;
     private String team;
+
     //create a no argument constructor
-    public CricketCoach(){
+    public CricketCoach() {
         System.out.println("CricketCoach: inside no-arg constructor");
     }
-   //our setter method
+
+    //our setter method
     public void setFortuneService(FortuneService fortuneService) {
         System.out.println("CricketCoach: inside setter method - setFortuneService");
         this.fortuneService = fortuneService;
     }
+
     public void setEmailAddress(String emailAddress) {
         System.out.println("CricketCoach: inside setter method - setEmailAddress");
         this.emailAddress = emailAddress;
     }
+
     public void setTeam(String team) {
         System.out.println("CricketCoach: inside setter method - setTeam");
         this.team = team;
+    }
+
+    public String getTeam() {
+        System.out.println("CricketCoach: inside getter method - getTeam");
+        return team;
+    }
+    public String getEmailAddress() {
+        System.out.println("CricketCoach: inside getter method - getEmailAddress");
+        return emailAddress;
     }
     @Override
     public String getDailyWorkOut() {
@@ -28,6 +41,6 @@ public class CricketCoach implements Coach{
 
     @Override
     public String getDailyFortune() {
-        return fortuneService.getFortune();
+        return fortuneService.getFortune() + " for " + team + " and " + emailAddress;
     }
 }
