@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--    define the dependency bean-->
+    <bean id="myFortuneService" class="com.practice.springdemo1.HappyFortuneService"></bean>
+    <bean id="myCoach" class="com.practice.springdemo1.CricketCoach">
+        <property name="fortuneService" ref="myFortuneService"></property>
+        <property name="emailAddress" value="ok@gmail.com"></property>
+        <property name="team" value="sun rises hyderabad"></property>
+    </bean>
+</beans>
