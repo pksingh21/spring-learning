@@ -7,8 +7,7 @@ import java.util.Random;
 public class HappyFortuneService implements FortuneService {
     //create a list of strings and assign some data to it
     private List<String> randomFortunes = new ArrayList<String>();
-    private Random rand = new Random(2);
-    private int random_integer;
+    private final Random rand = new Random(2);
 
     public void setRandomFortunes(List<String> randomFortunes) {
         this.randomFortunes = List.of(randomFortunes.get(0).split(","));
@@ -16,7 +15,7 @@ public class HappyFortuneService implements FortuneService {
 
     @Override
     public String getFortune() {
-        this.random_integer = rand.nextInt(3) + 0;
+        int random_integer = rand.nextInt(randomFortunes.size()-1);
         return randomFortunes.get(random_integer);
     }
 }
